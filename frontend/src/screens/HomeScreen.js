@@ -12,10 +12,10 @@ const HomeScreen = () => {
                 {products.map((product)=>(
                     <Col
                         key={product._id}
-                        sm={20}
-                        md={12}
-                        lg={6}
-                        xlg={3}
+                        sm={8}
+                        md={6}
+                        lg={3}
+                        xlg={2}
                         >
                         <h3>{product.name}</h3>
                             <Product product={product}/>
