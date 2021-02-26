@@ -10,6 +10,13 @@ const Header = () => {
                     variant="dark"
                     expand="lg"
                     collapseOnSelect>
+                        <img
+                            src="/img/nav_logo.png"
+                            width="40"
+                            height="40"
+                            className="d-inline-block align-top "
+                            alt="nav-logo"
+                        />
                 <Container>
                     <LinkContainer to='/'>
                         <Navbar.Brand >Pro Shop</Navbar.Brand>
