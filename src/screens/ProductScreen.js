@@ -1,18 +1,30 @@
-import React from 'react'
-import {Link} from 'react-router-dom';
+import React, {useState, useEffect} from 'react'
+import {Link} from 'react-router-dom'
 import {
         Row,
         Col,
         Image,
         ListGroup,
         Card,
-        Button
+        Button,
+        Collapse
     } from 'react-bootstrap'
-import Rating from '../components/Rating'; 
-import products  from '../products';
+import Rating from '../components/Rating'
+// import products  from '../products'
+import axios from 'axios'
 
 const ProductScreen = ({match}) => {
-    const product = products.find(p => p._id === match.params.id )
+   const[product, setProduct] = useState({})
+
+   useEffect(() => {
+    const fetchProdut = async () =>{
+        const {data }= await axios.get(`/api/products/${match.params.id}`)
+        setProduct(data)
+    }
+    fetchProdut()
+},[])
+
+const [open, setOpen] = useState(false);
     return (
         <>
             <Link 
@@ -39,7 +51,19 @@ const ProductScreen = ({match}) => {
                             <h4><strong>Price :</strong>  $ {product.price} </h4>
                         </ListGroup.Item>
                         <ListGroup.Item>
-                           <h4><strong>Description :</strong> {product.description} </h4> 
+                        <Button
+                            className="btn btn-dark btn-lg my-3"
+                            onClick={() => setOpen(!open)}
+                            aria-controls="description-collapse-text"
+                            aria-expanded={open}
+                        >
+                            Description
+                        </Button> 
+                        <Collapse in={open}>
+                            <div id="description-collapse-text">
+                                <h4> {product.description} </h4> 
+                            </div>
+                            </Collapse> 
                         </ListGroup.Item>
                     </ListGroup>
                 </Col>
@@ -87,3 +111,4 @@ const ProductScreen = ({match}) => {
 }
 
 export default ProductScreen
+
