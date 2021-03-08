@@ -28,7 +28,7 @@ const [open, setOpen] = useState(false);
     return (
         <>
             <Link 
-                className="btn btn-dark btn-sm my-3" to="/"> Go Back </Link>
+                className="btn btn-dark btn-sm my-3" to="/"> <i class="fas fa-arrow-alt-circle-left"></i> Go Back  </Link>
             <Row>
                 <Col md={6}>
                     <Image 
