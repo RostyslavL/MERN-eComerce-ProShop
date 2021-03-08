@@ -22,7 +22,7 @@ const ProductScreen = ({match}) => {
         setProduct(data)
     }
     fetchProdut()
-},[])
+},[match])
 
 const [open, setOpen] = useState(false);
     return (
