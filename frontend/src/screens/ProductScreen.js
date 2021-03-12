@@ -1,35 +1,46 @@
-import React, {useState, useEffect} from 'react'
+import React, {useEffect,useState} from 'react'
+import {useDispatch, useSelector} from 'react-redux'
 import {Link} from 'react-router-dom'
 import {
         Row,
         Col,
-        Image,
+        Image, 
         ListGroup,
         Card,
         Button,
         Collapse
-    } from 'react-bootstrap'
+    } 
+from 'react-bootstrap'
 import Rating from '../components/Rating'
-// import products  from '../products'
-import axios from 'axios'
+import Loader from '../components/Loader'
+import Message from '../components/Message'
+import {listProductDetails} from '../actions/productAction'
 
 const ProductScreen = ({match}) => {
-   const[product, setProduct] = useState({})
+    const dispatch = useDispatch()
 
-   useEffect(() => {
-    const fetchProdut = async () =>{
-        const {data }= await axios.get(`/api/products/${match.params.id}`)
-        setProduct(data)
-    }
-    fetchProdut()
-},[match])
+    const productDetails = useSelector((state) => state.productDetails)
+    
+    const { loading, error, product } = productDetails
 
-const [open, setOpen] = useState(false);
+    useEffect(() => {
+        dispatch(listProductDetails(match.params.id))
+   
+},[dispatch, match])
+
+
+
+
+const [open, setOpen] = useState(false)
+
+ 
     return (
         <>
             <Link 
-                className="btn btn-dark btn-sm my-3" to="/"> <i class="fas fa-arrow-alt-circle-left"></i> Go Back  </Link>
-            <Row>
+                className="btn btn-dark btn-sm my-3" to="/"> <i class="fas fa-arrow-alt-circle-left"></i> Go Back  
+            </Link>
+                {loading ? <Loader /> : error ? <Message variant="danger">{error} </Message> : (
+                    <Row>
                 <Col md={6}>
                     <Image 
                         src={product.image} fluid
@@ -106,7 +117,9 @@ const [open, setOpen] = useState(false);
                     </Card>
                 </Col>
             </Row>
-        </>
+        )}
+            
+    </>
     )
 }
 
