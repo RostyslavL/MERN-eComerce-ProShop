@@ -8,7 +8,8 @@ import {
         ListGroup,
         Card,
         Button,
-        Collapse
+        Collapse,
+        Form,
     } 
 from 'react-bootstrap'
 import Rating from '../components/Rating'
@@ -16,7 +17,9 @@ import Loader from '../components/Loader'
 import Message from '../components/Message'
 import {listProductDetails} from '../actions/productAction'
 
-const ProductScreen = ({match}) => {
+const ProductScreen = ({history, match}) => {
+    const [qty, setQty] = useState(0)
+
     const dispatch = useDispatch()
 
     const productDetails = useSelector((state) => state.productDetails)
@@ -28,12 +31,11 @@ const ProductScreen = ({match}) => {
    
 },[dispatch, match])
 
-
-
-
+const addToCardHandler = () =>{
+    history.push(`/cart/${match.params.id}?qty=${qty}`)
+}
 const [open, setOpen] = useState(false)
 
- 
     return (
         <>
             <Link 
@@ -101,6 +103,32 @@ const [open, setOpen] = useState(false)
                                         </Col>
                                     </Row>
                                 </ListGroup.Item>
+
+                                {product.countInStock > 0  && (
+                                    <ListGroup.Item>
+                                        <Row>
+                                            <Col>Qty</Col>
+                                            <Col>
+                                                <Form.Control 
+                                                    as='select'
+                                                    size='lg'
+                                                    value={qty} 
+                                                    onChange={(e) => setQty(e.target.value)}>
+                                                    {
+                                                        [...Array(product.countInStock).keys()].map((x) => (
+                                                            <option 
+                                                                key={x + 1} 
+                                                                value={x + 1}
+                                                            >
+                                                                {x + 1}
+                                                            </option>
+                                                        ))
+                                                    }    
+                                                </Form.Control> 
+                                            </Col>
+                                        </Row>
+                                    </ListGroup.Item>
+                                )}
                                 <ListGroup.Item>
                                     <Row>
                                         <Button
@@ -108,6 +136,7 @@ const [open, setOpen] = useState(false)
                                             type="button"
                                             variant="dark" 
                                             disabled = {product.countInStock === 0}
+                                            onClick={addToCardHandler}
                                         >
                                             Add to Card
                                         </Button>
