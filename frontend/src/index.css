@@ -20,6 +20,14 @@ main{
 .rating span{
   margin: .4rem;
 }
+h1{
+  font-size: 2rem;
+  padding: 1rem 0;
+}
+h2{
+  font-size: 1.5rem;
+  padding: 0.6rem 0 ;
+}
 h3{
   padding: 1.4rem 0;
 }

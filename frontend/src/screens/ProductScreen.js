@@ -39,7 +39,7 @@ const [open, setOpen] = useState(false)
     return (
         <>
             <Link 
-                className="btn btn-dark btn-sm my-3" to="/"> <i class="fas fa-arrow-alt-circle-left"></i> Go Back  
+                className="btn btn-dark btn-sm my-3" to="/"> <i className="fas fa-arrow-alt-circle-left"></i> Go Back  
             </Link>
                 {loading ? <Loader /> : error ? <Message variant="danger">{error} </Message> : (
                     <Row>
@@ -99,7 +99,7 @@ const [open, setOpen] = useState(false)
                                             <h4> <strong> Status : </strong> </h4>
                                         </Col>
                                         <Col>
-                                            <h5> {product.countInStock > 0  ? ('In Stock' ) : 'Out Of Stock'}  </h5>
+                                            <h5> {product.countInStock > 0  ? ('In Stock' ) : ('Out Of Stock') }  </h5>
                                         </Col>
                                     </Row>
                                 </ListGroup.Item>
@@ -107,7 +107,7 @@ const [open, setOpen] = useState(false)
                                 {product.countInStock > 0  && (
                                     <ListGroup.Item>
                                         <Row>
-                                            <Col>Qty</Col>
+                                            <Col> Qty </Col>
                                             <Col>
                                                 <Form.Control 
                                                     as='select'
