@@ -5,7 +5,7 @@ const Message = ({variant, children}) => {
     
     return (
         <Alert variant={variant}> 
-          <Alert.Heading>Oh snap! You got an error!</Alert.Heading>
+          <Alert.Heading> {variant}  </Alert.Heading>
           <hr />
             <p className="mb-0">
                 {children} 
