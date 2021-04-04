@@ -1,11 +1,9 @@
 import React, {useState, useEffect} from 'react'
-import { Link } from 'react-router-dom'
 import {
     Form, 
     Button, 
     Row, 
     Col,
-
 } from 'react-bootstrap'
 import {useDispatch, useSelector} from 'react-redux'
 import Message from '../components/Message'
@@ -38,7 +36,7 @@ const ProfileScreen = ({ location, history }) => {
                 setEmail(user.email)
             }
         }
-    }, [dispatch, history, userInfo])
+    }, [dispatch, history, userInfo, user])
     
     const submitHandler = (e) =>{
         e.preventDefault()
@@ -52,7 +50,7 @@ const ProfileScreen = ({ location, history }) => {
  return (
     <Row>
         <Col md={3}>
-    <h2> User Profile</h2>
+    <h2> <i class="fas fa-user-edit"></i> User Profile </h2>
       {message && <Message variant='danger'> {message} </Message>}
       {error && <Message variant='danger'> {error} </Message>}
       {loading && <Loader />}
@@ -62,6 +60,7 @@ const ProfileScreen = ({ location, history }) => {
           <Form.Control
             type='name'
             placeholder='Enter your user name'
+            size='lg'
             value={name}
             onChange={(e) => setName(e.target.value)}
           ></Form.Control>
@@ -72,6 +71,7 @@ const ProfileScreen = ({ location, history }) => {
           <Form.Control
             type='email'
             placeholder='Enter email'
+            size='lg'
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           ></Form.Control>
@@ -82,6 +82,7 @@ const ProfileScreen = ({ location, history }) => {
           <Form.Control
             type='password'
             placeholder='Enter password'
+            size='lg'
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           ></Form.Control>
@@ -92,6 +93,7 @@ const ProfileScreen = ({ location, history }) => {
           <Form.Control
             type='password'
             placeholder='Confirm your password'
+            size='lg'
             value={confirmPassword}
             onChange={(e) => setConfirmPassword(e.target.value)}
           ></Form.Control>
