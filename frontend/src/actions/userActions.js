@@ -98,7 +98,7 @@ export const getUserDetails = (id) => async (dispatch, getState) =>{
             headers: {
                 'Content-Type': 'application/json',
                  Authorization: `Bearer ${userInfo.token}`
-            }
+            },
         }
 
         const { data } = await axios.get(
@@ -118,5 +118,5 @@ export const getUserDetails = (id) => async (dispatch, getState) =>{
               ? error.response.data.message
               : error.message,
         })
-      }
+    }
 }
