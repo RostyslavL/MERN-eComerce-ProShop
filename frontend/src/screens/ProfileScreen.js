@@ -24,6 +24,9 @@ const ProfileScreen = ({ location, history }) => {
 
     const userLogin = useSelector( state => state.userLogin)
     const { userInfo} = userLogin
+
+    const userUpdateProfile = useSelector( state => state.userUpdateProfile)
+    const { success} = userUpdateProfile
     
     useEffect(() =>{
         if(!userInfo){
@@ -54,9 +57,10 @@ const ProfileScreen = ({ location, history }) => {
  return (
     <Row>
         <Col md={3}>
-    <h2> <i class="fas fa-user-edit"></i> User Profile </h2>
-      {message && <Message variant='danger'> {message} </Message>}
-      {error && <Message variant='danger'> {error} </Message>}
+    <h2> <i className="fas fa-user-edit"></i> User Profile </h2>
+      {message && <Message variant='danger'> <h2> {message} </h2> </Message>}
+      {error && <Message variant='danger'> <h3> {error} </h3> </Message>}
+      {success && <Message variant='success'>  Profile Successfully Updated </Message>}
       {loading && <Loader />}
       <Form onSubmit={submitHandler}>
         <Form.Group controlId='name'>
