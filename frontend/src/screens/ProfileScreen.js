@@ -8,7 +8,7 @@ import {
 import {useDispatch, useSelector} from 'react-redux'
 import Message from '../components/Message'
 import Loader from '../components/Loader'
-import { getUserDetails } from '../actions/userActions'
+import { getUserDetails, updateUserProfile } from '../actions/userActions'
 
 const ProfileScreen = ({ location, history }) => {
     const [name, setName] = useState('')
@@ -43,7 +43,11 @@ const ProfileScreen = ({ location, history }) => {
         if(password !== confirmPassword){
             setMessage('Password do not match , check provided password')
         }else{
-            // dispatch(register(name, email, password)) DISPATCH UPDATE PROFILE
+            dispatch(updateUserProfile({ 
+                id: user._id,
+                name, email, 
+                password
+            })) 
         }
     }
 
