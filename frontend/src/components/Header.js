@@ -44,14 +44,14 @@ const Header = () => {
                     (
                         <NavDropdown title={userInfo.name} id='username'>
                             <LinkContainer to='/profile'>
-                                <NavDropdown.Item>
-                                    Profile
+                                <NavDropdown.Item >
+                                <i className="fas fa-user-cog"></i> Profile
                                 </NavDropdown.Item>
                             </LinkContainer>
                             <NavDropdown.Item
                                 onClick={logoutHandler}
                             >
-                                Logout
+                                <i className="fas fa-sign-out-alt"></i> Logout
                             </NavDropdown.Item>
                         </NavDropdown>
                         
