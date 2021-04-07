@@ -32,7 +32,10 @@ const PaymentScreen = ({ history}) => {
             <Form onSubmit={submitHandler} >
                 <Form.Group style={{ 
                         width: '100%', 
-                        backgroundColor: '#fff' ,
+                        border: '2px solid #444',
+                        borderRadius:'10px', 
+                        backgroundColor: '#f2ebeb' ,
+                        padding: '50px 50px ',
                         justifyContent:'center'
                     }}>
                     <Form.Label as='legend'>
