@@ -1,8 +1,9 @@
 import  {useState} from 'react'
-import { Container ,Form, Button, Col,Row  } from 'react-bootstrap'
+import { Form, Col,Row  } from 'react-bootstrap'
 import {useDispatch, useSelector} from 'react-redux'
 import FormContainer from '../components/FormContainer'
 import CheckoutSteps from '../components/CheckoutSteps'
+import ContinueButton from '../components/ContinueButton'
 import {savePaymentMethod} from '../actions/cartActions'
 
 const PaymentScreen = ({ history}) => {
@@ -131,9 +132,7 @@ const PaymentScreen = ({ history}) => {
                         </Row>                    
                 </Form.Group>
                 <br />
-                <Button type='submit' variant='dark'>
-                    Continue
-                </Button>
+                    <ContinueButton />  
             </Form>
         </FormContainer>
     )
