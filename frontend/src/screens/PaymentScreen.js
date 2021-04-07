@@ -29,7 +29,7 @@ const PaymentScreen = ({ history}) => {
     return (
         <FormContainer size="lg" >
             <CheckoutSteps step1 step2 step3/>
-            <h1>   <i class="fas fa-money-bill-wave"></i> Payment  </h1>
+            <h1>   <i className="fas fa-money-bill-wave"></i> Payment  </h1>
             <Form onSubmit={submitHandler} >
                 <Form.Group style={{ 
                         width: '100%', 
@@ -52,14 +52,14 @@ const PaymentScreen = ({ history}) => {
                                     name='paymentMethod'
                                     value='PayPal'
                                     checked
-                                    onChange={(e)=> setPaymentMethod(e.target.value)}>
+                                    onChange={(e) => setPaymentMethod(e.target.value)}>
                                 </Form.Check>
                             </Col>
                         </Row>
                             <br />  
                         <Row>
                             <Col>
-                                    <h3>    <i class="fab fa-cc-stripe"></i>    </h3>
+                                    <h3>    <i className="fab fa-cc-stripe"></i>    </h3>
                                 {/* Add additional new payment method : */}
                                 <Form.Check 
                                     type='radio'
@@ -67,14 +67,14 @@ const PaymentScreen = ({ history}) => {
                                     id='Stripe'
                                     name='paymentMethod'
                                     value='Stripe'
-                                    onChange={(e)=> setPaymentMethod(e.target.value)}> 
+                                    onChange={(e) => setPaymentMethod(e.target.value)}>
                                 </Form.Check>
                             </Col>
                         </Row>
                             <br />
                         <Row>
                             <Col>
-                                <h3>    <i class="fab fa-google-pay"></i>   </h3>
+                                <h3>    <i className="fab fa-google-pay"></i>   </h3>
                                 {/* Add additional new payment method : */}
                                 <Form.Check 
                                     type='radio'
@@ -89,7 +89,7 @@ const PaymentScreen = ({ history}) => {
                             <br />  
                         <Row>
                             <Col>
-                                <h3>    <i class="fab fa-amazon-pay"></i>    </h3>
+                                <h3>    <i className="fab fa-amazon-pay"></i>    </h3>
                                 {/* Add additional new payment method : */}
                                 <Form.Check 
                                     type='radio'
@@ -104,7 +104,7 @@ const PaymentScreen = ({ history}) => {
                             <br />  
                         <Row>
                             <Col>
-                                <h3>    <i class="fab fa-cc-mastercard"></i>    </h3>
+                                <h3>    <i className="fab fa-cc-mastercard"></i>    </h3>
                                 {/* Add additional new payment method : */}
                                 <Form.Check 
                                     type='radio'
@@ -118,7 +118,7 @@ const PaymentScreen = ({ history}) => {
                         </Row>                    
                         <Row>
                             <Col>
-                                <h3>   <i class="fab fa-apple-pay"></i>    </h3>
+                                <h3>   <i className="fab fa-apple-pay"></i>    </h3>
                                 {/* Add additional new payment method : */}
                                 <Form.Check 
                                     type='radio'

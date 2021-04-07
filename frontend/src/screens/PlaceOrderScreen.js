@@ -1,11 +1,13 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import {Link} from 'react-router-dom'
 import { Button, Row, Col, ListGroup, Image, Card } from 'react-bootstrap'
 import {useDispatch, useSelector} from 'react-redux'
 import Message from '../components/Message'
 import CheckoutSteps from '../components/CheckoutSteps'
+import {createOrder} from '../actions/orderActions'
 
-function PlaceOrderScreen() {
+const PlaceOrderScreen = ({ history }) =>{
+    const dispatch = useDispatch()
 
     const cart  = useSelector(state => state.cart)
 
@@ -18,14 +20,35 @@ function PlaceOrderScreen() {
     cart.itemsPrice = addDecimalsToPrice(cart.cartItems.reduce((acc, item) => acc + item.price * item.qty, 0))
     cart.shippingPrice = addDecimalsToPrice(cart.itemsPrice > 100 ? 0 : 100)
     cart.taxPrice = addDecimalsToPrice(Number((0.023 * cart.itemsPrice ).toFixed(2)))
-    cart.totalPrice = Number(cart.itemsPrice)  + Number(cart.shippingPrice) + Number(cart.taxPrice)
+    cart.totalPrice = addDecimalsToPrice((Number(cart.itemsPrice)  + Number(cart.shippingPrice) + Number(cart.taxPrice)).toFixed(2))
+    // cart.paymentMethod
+    
 
+    const orderCreate = useSelector( state => state.orderCreate)
+    const { order, success, error } = orderCreate
 
-    const placeOrderHandler = (e) =>{
-        // e.preventDafault()
+    useEffect(() =>{
+        if(success){
+            history.push(`/order/${order._id}`)
+        }
+        //eslint-disable-next-line
+    }, [history, success, order])
+ 
+    const placeOrderHandler = () =>{
         console.log('placeOrderHandler - invoced')
+        dispatch(
+        createOrder({
+            orderItems: cart.cartItems,
+            shippingAddress: cart.shippingAddress,
+            paymentMethod: cart.paymentMethod,
+            itemsPrice: cart.itemsPrice,
+            shippingPrice: cart.shippingPrice,
+            taxPrice: cart.taxPrice,
+            totalPrice: cart.totalPrice,
+          })
+        )
     }
-
+    
     return (
         <>
            <CheckoutSteps step1 step2 step3 step4/> 
@@ -109,7 +132,12 @@ function PlaceOrderScreen() {
                                     <Col> <b> Total </b></Col>
                                     <Col> <b> {cart.totalPrice} $</b></Col>
                                 </Row>
-                            </ListGroup.Item>   
+                            </ListGroup.Item> 
+                              
+                            <ListGroup.Item>
+                                {error && <Message variant='danger'>Error : {error}</Message>}
+                            </ListGroup.Item>
+
                             <ListGroup.Item>
                                 <Button 
                                     type='button' 
