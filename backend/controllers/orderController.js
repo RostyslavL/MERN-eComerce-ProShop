@@ -36,3 +36,5 @@ const addOrderItems = asyncHandler(async(req, res) =>{
         res.status(201).json(createdOrder) // HTTP 201 Created success status response code 
     }
 })
+
+export { addOrderItems }
