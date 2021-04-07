@@ -16,7 +16,6 @@ const ShippingScreen = ({ history}) => {
     const [country, setCountry] = useState(shippingAddress.country)
 
     const dispatch = useDispatch()
-    // const saveShippingAddress = useSelector( state => state.saveShippingAddress)
 
     const submitHandler = (e) =>{
         e.preventDefault()
