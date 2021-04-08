@@ -37,19 +37,24 @@ const OrderScreen = ({ match }) =>{
                 <Col md={8}>
                     <ListGroup variant='flush'>
                         <ListGroup.Item >
-                            <h2> <b>Shipping To</b> </h2>
-                                <p>
-                                    <b> Address : 
-                                            &nbsp; {order.shippingAddress.address},{' '} 
-                                            &nbsp; {order.shippingAddress.city}{' '},
-                                            &nbsp; {order.shippingAddress.postalCode},{' '}
-                                            &nbsp; {order.shippingAddress.country}
-                                    </b>
-                                </p>
+                        <h2>Shipping</h2>
+              <p>
+                <strong>Name: &nbsp; </strong> {order.user.name}
+              </p>
+              <p>
+                <strong>Email: &nbsp;</strong>{' '}
+                <a href={`mailto:${order.user.email}`}>{order.user.email}</a>
+              </p>
+              <p>
+                <strong>Address:  &nbsp;</strong>
+                &nbsp;{order.shippingAddress.address}, {order.shippingAddress.city}{' '}
+                &nbsp;{order.shippingAddress.postalCode},{' '}
+                &nbsp;{order.shippingAddress.country}
+              </p>
                         </ListGroup.Item>
 
                         <ListGroup.Item >
-                            <h2> <b>Payment Method</b> </h2>
+                            <h2> <b>Payment Method &nbsp;</b> </h2>
                                 <p>
                                     <strong> Method : 
                                         &nbsp; {order.paymentMethod}
