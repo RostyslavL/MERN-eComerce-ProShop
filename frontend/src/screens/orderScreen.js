@@ -11,10 +11,17 @@ const OrderScreen = ({ match }) =>{
     const orderId = match.params.id
 
     const dispatch = useDispatch()
- 
+
     const orderDetails = useSelector( state => state.orderDetails)
     const { order, loading, error } = orderDetails
 
+    if(!loading){
+    // Calculate prices
+        const addDecimalsToPrice = (num) =>{
+            return (Math.round(num * 100) / 100).toFixed(2)
+        }
+        order.itemsPrice = addDecimalsToPrice(order.orderItems.reduce((acc, item) => acc + item.price * item.qty, 0))
+    }
     useEffect(() =>{
         dispatch(getOrderDetails(orderId))
     }, [])
