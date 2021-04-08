@@ -29,11 +29,10 @@ export const orderCreateReducers = (state = {}, action) =>{
     }
 }
   
-export const orderDeatilsReducers = (state = {
+export const orderDetailsReducers = (state = {
     orderItems: [], 
     shippingAddress:{}
-    }, 
-    action) =>{
+    }, action) =>{
     switch(action.type){
         case ORDER_DETAILS_REQUEST:
             return {
