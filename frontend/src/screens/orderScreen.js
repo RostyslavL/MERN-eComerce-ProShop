@@ -27,7 +27,11 @@ const OrderScreen = ({ match }) =>{
     }, [])
      
     return (
-        loading ? <Loader /> : error ? <Message variant='danger'>{error}</Message> : <>
+        loading ? 
+        <Loader /> : 
+        error ? 
+        <Message variant='danger'>{error}</Message> : 
+        <>
             <h1> Order : {orderId} </h1>
             <Row>
                 <Col md={8}>
@@ -36,10 +40,10 @@ const OrderScreen = ({ match }) =>{
                             <h2> <b>Shipping To</b> </h2>
                                 <p>
                                     <b> Address : 
-                                            {order.shippingAddress.address},{' '} 
-                                            {order.shippingAddress.city}{' '},
-                                            {order.shippingAddress.postalCode},{' '}
-                                            {order.shippingAddress.country}
+                                            &nbsp; {order.shippingAddress.address},{' '} 
+                                            &nbsp; {order.shippingAddress.city}{' '},
+                                            &nbsp; {order.shippingAddress.postalCode},{' '}
+                                            &nbsp; {order.shippingAddress.country}
                                     </b>
                                 </p>
                         </ListGroup.Item>
@@ -48,14 +52,14 @@ const OrderScreen = ({ match }) =>{
                             <h2> <b>Payment Method</b> </h2>
                                 <p>
                                     <strong> Method : 
-                                        {order.paymentMethod}
+                                        &nbsp; {order.paymentMethod}
                                     </strong>
                                 </p>
                         </ListGroup.Item>
 
                         <ListGroup.Item>
                             <h2> <b> Orders </b> </h2>
-                                {order.orderItems.length === 0 ? 
+                                &nbsp;  {order.orderItems.length === 0 ? 
                                 <Message> Your Order is Empty </Message> : 
                                 (
                                     <ListGroup variant='flush'>
