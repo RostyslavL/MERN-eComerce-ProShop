@@ -12,7 +12,7 @@ const OrderScreen = ({ match }) =>{
 
     const dispatch = useDispatch()
  
-    const orderDetails = useSelector( state => state.getOrderDetails)
+    const orderDetails = useSelector( state => state.orderDetails)
     const { order, loading, error } = orderDetails
 
     useEffect(() =>{
