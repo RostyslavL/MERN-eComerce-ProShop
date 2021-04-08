@@ -29,7 +29,9 @@ export const orderCreateReducers = (state = {}, action) =>{
     }
 }
   
-export const orderDetailsReducers = (state = {
+export const orderDetailsReducers = (
+    state = {
+    loading:true,
     orderItems: [], 
     shippingAddress:{}
     }, action) =>{
