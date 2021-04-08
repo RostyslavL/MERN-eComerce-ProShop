@@ -51,15 +51,31 @@ const OrderScreen = ({ match }) =>{
                 &nbsp;{order.shippingAddress.postalCode},{' '}
                 &nbsp;{order.shippingAddress.country}
               </p>
+                    {
+                    order.isDelivered 
+                        ? 
+                        <Message variant='success'> Delivered on {order.deliveredAt}</Message> 
+                        : 
+                        <Message variant='warning'> <h2>Not Delivered Yet</h2> </Message>
+                    }
                         </ListGroup.Item>
 
                         <ListGroup.Item >
                             <h2> <b>Payment Method &nbsp;</b> </h2>
+                            <p>
                                 <p>
                                     <strong> Method : 
                                         &nbsp; {order.paymentMethod}
                                     </strong>
                                 </p>
+                            </p>
+                            {
+                            order.isPaid 
+                                ? 
+                                <Message variant='success'> Paid on {order.paidAt}</Message> 
+                                : 
+                                <Message variant='warning'> <h2>Not Payed Yet</h2> </Message>
+                            }
                         </ListGroup.Item>
 
                         <ListGroup.Item>
