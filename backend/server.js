@@ -24,8 +24,9 @@ app.use('/api/products', productRouts)
 app.use('/api/users', userRouts)
 app.use('/api/orders', orderRouts)
 
-app.use(notFound)
+app.get('/api/config/paypal', (req, res) => res.send(process.env.PAYPAL_CLINET_ID))
 
+app.use(notFound)
 app.use(errorHandler)
 
 const  PORT = process.env.PORT || 5000
