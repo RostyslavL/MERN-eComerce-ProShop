@@ -78,10 +78,10 @@ const PaymentScreen = ({ history}) => {
                                 {/* Add additional new payment method : */}
                                 <Form.Check 
                                     type='radio'
-                                    label='Goopgle Pay'
-                                    id='GoopglePay'
+                                    label='Google Pay'
+                                    id='GooglePay'
                                     name='paymentMethod'
-                                    value='GoopglePay'
+                                    value='GooglePay'
                                     onChange={(e)=> setPaymentMethod(e.target.value)}> 
                                 </Form.Check>
                             </Col>
