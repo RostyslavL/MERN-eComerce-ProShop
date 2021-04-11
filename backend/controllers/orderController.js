@@ -80,12 +80,6 @@ const updateOrderToPaid = asyncHandler(async(req, res) =>{
     }
 })
 
-export { 
-    addOrderItems,
-    getOrderByID,
-    updateOrderToPaid 
-}
-
 // @desc    : Gte logged in user orders
 // @route   : GET request to /api/orders/'myorders'
 // @access  : Private route
