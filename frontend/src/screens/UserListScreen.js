@@ -29,7 +29,7 @@ const UserListScreen = () => {
                 <Loader/> : 
                 error ? 
                 <Message variant='danger'>{error}</Message> : (
-                    <Table stripped bordered hover responsive className='table-sm'>
+                    <Table striped bordered hover responsive className='table-sm' variant='dark'>
                         <thead>
                             <tr>
                                 <th>ID</th>
@@ -55,10 +55,11 @@ const UserListScreen = () => {
                                         </td>
                                     <td>
                                         <LinkContainer to={`/users/${user._id}/edit`}>
-                                            <Button variant='dark' className='btn-sm'>
+                                            <Button variant='light' className='btn-sm'>
                                                 <i className="fas fa-user-edit"> Edit </i>
                                             </Button>
                                         </LinkContainer>
+                                            <> &nbsp; </>
                                         <Button 
                                             variant='danger' 
                                             className='btn-sm' 
