@@ -85,3 +85,20 @@ export {
     getOrderByID,
     updateOrderToPaid 
 }
+
+// @desc    : Gte logged in user orders
+// @route   : GET request to /api/orders/'myorders'
+// @access  : Private route
+
+const getMyOrders = asyncHandler(async(req, res) =>{
+    const order = await Order.find({user: req.user._id})
+    res.json(orders)
+   
+})
+
+export { 
+    addOrderItems,
+    getOrderByID,
+    updateOrderToPaid ,
+    getMyOrders
+}
