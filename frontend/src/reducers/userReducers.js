@@ -89,7 +89,7 @@ export const userDetailsReducer = (
     }
   }  
   
-  export const userLisReducer = (
+  export const userListReducer = (
     state = { users: []}, action
   ) => {
     switch (action.type) {

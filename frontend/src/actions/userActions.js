@@ -16,6 +16,7 @@ import {
     USER_DETAILS_RESET,
     USER_LIST_REQUEST,
     USER_LIST_SUCCESS,
+    USER_LIST_FAIL,
 } from '../constants/userConstants'
 import { ORDER_LIST_MY_RESET }  from '../constants/orderConstants.js'
 
@@ -176,7 +177,7 @@ export const listUsers = () => async (dispatch, getState) =>{
             },
         }
 
-        const { data } = await axios.get(`/api/users`,config)
+        const { data } = await axios.get(`/api/users`, config)
 
         dispatch({
             type: USER_LIST_SUCCESS,
@@ -185,7 +186,7 @@ export const listUsers = () => async (dispatch, getState) =>{
         
     } catch (error) {
         dispatch({
-          type: USER_LOGIN_FAIL,
+          type: USER_LIST_FAIL,
           payload:
             error.response && error.response.data.message
               ? error.response.data.message
