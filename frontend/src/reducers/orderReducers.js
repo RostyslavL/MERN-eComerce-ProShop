@@ -86,7 +86,7 @@ export const orderPayReducers = (
     }
 }
 
-export const orderMyListReducer = (
+export const orderListMyReducer = (
     state = { 
       orders:[] 
     }, action
