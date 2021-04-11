@@ -8,9 +8,11 @@ import {
     ORDER_PAY_REQUEST,
     ORDER_PAY_SUCCESS,
     ORDER_PAY_FAIL,
-    ORDER_PAY_RESET
+    ORDER_PAY_RESET,
+    ORDER_LIST_MY_FAIL, 
+    ORDER_LIST_MY_REQUEST, 
+    ORDER_LIST_MY_SUCCESS
 } from '../constants/orderConstants.js'
-
 export const orderCreateReducers = (state = {}, action) =>{
     switch(action.type){
         case ORDER_CREATE_REQUEST:
@@ -83,5 +85,27 @@ export const orderPayReducers = (
             return state
     }
 }
-  
-  
+
+export const orderMyListReducer = (
+    state = { 
+      orders:[] 
+    }, action
+  ) => {
+    switch (action.type) {
+      case ORDER_LIST_MY_REQUEST:
+        return {
+           ...state, loading: true
+          }
+      case ORDER_LIST_MY_SUCCESS:
+        return { 
+          loading: false, 
+          orders: action.payload 
+        }
+      case ORDER_LIST_MY_FAIL:
+        return { 
+          loading: false, error: action.payload 
+        }
+      default:
+        return state
+    }
+  }

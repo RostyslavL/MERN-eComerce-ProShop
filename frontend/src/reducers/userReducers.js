@@ -67,6 +67,7 @@ export const userDetailsReducer = (
         return state
     }
   }
+  
   export const userUpdateProfileReducer = (
     state = { }, action
   ) => {
@@ -80,5 +81,4 @@ export const userDetailsReducer = (
       default:
         return state
     }
-  }
-  
+  }  
