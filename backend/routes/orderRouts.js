@@ -9,8 +9,9 @@ import {
 import { protect } from '../middleware/authMiddleware.js'
 
 router.route('/').post(protect, addOrderItems)
+router.route('/myorders').get(protect, getMyOrders)
 router.route('/:id').get(protect, getOrderByID)
 router.route('/:id/pay').put(protect, updateOrderToPaid)
-router.route('/myorders').get(protect, getMyOrders)
+
 
 export default router
