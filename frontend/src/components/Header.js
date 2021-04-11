@@ -13,6 +13,7 @@ const Header = () => {
 
     const logoutHandler = (e) =>{
         dispatch(logout())
+
     }
     return (
         <header>
@@ -93,3 +94,4 @@ const Header = () => {
 }
 
 export default Header
+
