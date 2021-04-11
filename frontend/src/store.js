@@ -27,7 +27,7 @@ const reducer = combineReducers({
     orderCreate: orderCreateReducers,
     orderDetails: orderDetailsReducers,
     orderPay: orderPayReducers,
-    myOrderList: orderMyListReducer,
+    orderMyList: orderMyListReducer,
 })
 
 const cartItemsFromStorage =  localStorage.getItem('cartItems') ? JSON.parse(localStorage.getItem('cartItems')) : []
