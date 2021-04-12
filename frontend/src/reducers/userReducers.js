@@ -110,8 +110,8 @@ export const userDetailsReducer = (
     }
   }  
   
-  export const deleteUserReducer = (
-    state = { }, action) => {
+  export const userDeleteReducer = (
+    state = {}, action) => {
     switch (action.type) {
       case USER_DELETE_REQUEST:
         return { loading: true }
