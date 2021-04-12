@@ -22,7 +22,7 @@ const UserListScreen = ({history}) => {
         }else{
             history.push('/login')
         }   
-    }, [dispatch, history])
+    }, [dispatch, history, userInfo])
 
     const deleteHandler = (id) =>{
         console.log('deleteHandler - invoiced')
