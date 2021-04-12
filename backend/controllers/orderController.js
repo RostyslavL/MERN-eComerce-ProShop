@@ -80,7 +80,7 @@ const updateOrderToPaid = asyncHandler(async(req, res) =>{
     }
 })
 
-// @desc    : Gte logged in user orders
+// @desc    : GET logged in user orders
 // @route   : GET request to /api/orders/'myorders'
 // @access  : Private route
 
