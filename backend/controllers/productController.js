@@ -84,7 +84,7 @@ const updateProduct = asyncHandler(async(req, res) =>{
         description
     } = req.body
 
-    const product = await Product.findById(res.params.id)
+    const product = await Product.findById(req.params.id)
 
     if(product){
         product.name = name
