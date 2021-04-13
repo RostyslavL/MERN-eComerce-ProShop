@@ -4,7 +4,7 @@ import { Table, Button, Row, Col} from 'react-bootstrap'
 import {useDispatch, useSelector} from 'react-redux'
 import Message from '../components/Message'
 import Loader from '../components/Loader'
-import {listProducts} from '../actions/productActions'
+import {listProducts} from '../actions/productAction'
 
 const ProductListScreen = ({history, match}) => {
 
@@ -29,17 +29,21 @@ const ProductListScreen = ({history, match}) => {
             // delete products 
         }
     }
+    const createProductHandler = (e) =>{
+        e.preventDefault()
+        console.log('createProductHandler - invoced')
+    }
 
     return (
         <>
         <Row className='align-item-center'>
             <Col>
-                <h1> Products </h1>
+                <h1> <b>Products</b> </h1>
             </Col>
             <Col className='text-right'>
                 <Button 
-                    className='my-3' 
-                    onClick={createProductHandler}> 
+                    className='btn btn-md btn-light my-3' 
+                    onClick={createProductHandler} > 
                         <i className='fas fa-plus'> 
                             <b> Create Product </b> 
                         </i> 
@@ -54,21 +58,22 @@ const ProductListScreen = ({history, match}) => {
                     <Table striped bordered hover responsive className='table-sm' variant='dark'>
                         <thead>
                             <tr>
-                                <th>ID</th>
-                                <th>NAME</th>
-                                <th>PRICE</th>
-                                <th>CATEGORY</th>
-                                <th>BRAND</th>
+                                <th><h5>ID</h5></th>
+                                <th><h5>NAME</h5></th>
+                                <th><h5>PRICE</h5></th>
+                                <th><h5>CATEGORY</h5></th>
+                                <th><h5>BRAND</h5></th>
+                                <th><h5>ACTIONS</h5></th>
                             </tr>
                         </thead>
                         <tbody>
                             {products.map(product =>
                                 <tr key={product._id}>
-                                    <td>{product._id}</td>
-                                    <td>{product.name}</td>
-                                    <td>${product.price}</td>
-                                    <td>{product.category}</td>
-                                    <td>{product.brand}</td>
+                                    <td><h6>{product._id}</h6></td>
+                                    <td><h6>{product.name}</h6></td>
+                                    <td><h6>${product.price}</h6></td>
+                                    <td><h6>{product.category}</h6></td>
+                                    <td><h6>{product.brand}</h6></td>
                                     <td>
                                         <LinkContainer to={`/admin/product/${product._id}/edit`}>
                                             <Button variant='light' className='btn-sm'>
