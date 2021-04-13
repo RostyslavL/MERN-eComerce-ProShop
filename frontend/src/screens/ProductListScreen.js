@@ -29,8 +29,7 @@ const ProductListScreen = ({history, match}) => {
             // delete products 
         }
     }
-    const createProductHandler = (e) =>{
-        e.preventDefault()
+    const createProductHandler = (product) =>{
         console.log('createProductHandler - invoced')
     }
 
