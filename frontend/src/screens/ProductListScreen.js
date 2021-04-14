@@ -43,7 +43,7 @@ const ProductListScreen = ({history, match}) => {
             history.push('/login')
         }
         if(successCreate) {
-            history.push(`admin/products/${createdProduct._id}/edit`)
+            history.push(`/admin/product/${createdProduct._id}/edit`)
         }else{
             dispatch(listProducts())
         }
