@@ -176,7 +176,7 @@ const ProductEditScreen = ({ match, history }) => {
             <Form.Group controlId='description'>
               <Form.Label>
                   <h2>
-                    <i class="fas fa-pen">
+                    <i className="fas fa-pen">
                       <b> &nbsp; Description</b>
                     </i>
                   </h2>
