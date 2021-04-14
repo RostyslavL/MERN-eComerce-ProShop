@@ -18,7 +18,6 @@ import {
   PRODUCT_UPDATE_REQUEST,
   PRODUCT_UPDATE_SUCCESS,
   PRODUCT_UPDATE_FAIL,  
-  PRODUCT_UPDATE_RESET,
 } 
 from '../constants/productConstants.js'
 import axios from 'axios'
@@ -141,12 +140,16 @@ export const updateProduct = (product) => async (
 
         const config = {
             headers: {
-              'Content-type':'application/json',
+              'Content-Type': 'application/json',
               Authorization: `Bearer ${userInfo.token}`
             },
         }
 
-       const { data } = await axios.put(`/api/products/${product._id}`, {product}, config) 
+        const { data } = await axios.put(
+          `/api/products/${product._id}`,
+          product,
+          config
+        ) 
        
       dispatch({ 
         type: PRODUCT_UPDATE_SUCCESS,
@@ -163,3 +166,4 @@ export const updateProduct = (product) => async (
         })
     }
 }
+
