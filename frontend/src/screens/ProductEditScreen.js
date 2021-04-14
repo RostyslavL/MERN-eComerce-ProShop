@@ -1,3 +1,4 @@
+import axios from 'axios'
 import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { Form, Button } from 'react-bootstrap'
@@ -7,6 +8,7 @@ import Loader from '../components/Loader'
 import FormContainer from '../components/FormContainer'
 import { listProductDetails, updateProduct } from '../actions/productAction'
 import { PRODUCT_UPDATE_RESET } from '../constants/productConstants'
+
 
 const ProductEditScreen = ({ match, history }) => {
   const productId = match.params.id
@@ -20,6 +22,7 @@ const ProductEditScreen = ({ match, history }) => {
   const [rating, setRating] = useState(0)
   const [numReviews, setNumReviews] = useState(0)
   const [description, setDescription] = useState('')
+  const [uploading, setUploading] = useState(false)
   
   const dispatch = useDispatch()
 
@@ -51,21 +54,30 @@ const ProductEditScreen = ({ match, history }) => {
     
   }, [dispatch, history, productId, product , successUpdate])
 
-//   const submitHandler = (e) => {
-//     e.preventDefault()
-//     dispatch(updateProduct({
-//         _id: productId,
-//         name,
-//         price,
-//         image,
-//         brand,
-//         category,
-//         countInStock,
-//         rating,
-//         numReviews,
-//         description,
-//     }))
-//   }
+  const uploadFileHandler = async (e) =>{
+    const file = e.target.files[0]
+    const formData = new FormData()
+    formData.append('image', file)
+    setUploading(true)
+
+    try {
+        const config ={
+          headers:{
+            'Content-Type': 'multipart/form-data'
+          }
+        }
+        
+      const {data} = await axios.post('/api/upload', formData, config)
+
+      setImage(data)
+      setUploading(false)
+
+    } catch (error) {
+      console.log(error)
+      setUploading(false)
+    }
+  }
+
   const submitHandler = (e) => {
     e.preventDefault()
     dispatch(
@@ -90,7 +102,7 @@ const ProductEditScreen = ({ match, history }) => {
       <FormContainer>
         <h1> &nbsp;<i className="far fa-edit"></i> Edit Product </h1>
         {loadingUpdate && <Loader />}
-        {errorUpdate && <Message variant='danger'>{errorUpdate}></Message>}
+        {errorUpdate && <Message variant='danger'>{errorUpdate}</Message>}
         {loading ? (
           <Loader />
         ) : error ? (
@@ -137,6 +149,13 @@ const ProductEditScreen = ({ match, history }) => {
                 value={image}
                 onChange={(e) => setImage(e.target.value)}
               ></Form.Control>
+              <Form.File 
+                id='image-file' 
+                label='Choose file' 
+                onChange={uploadFileHandler}
+                custom
+                className='btn btn-sm'></Form.File>
+              {uploading && <Loader />}
             </Form.Group>
 
             <Form.Group controlId='brand'>
