@@ -13,8 +13,7 @@ import {
 
   PRODUCT_CREATE_REQUEST,
   PRODUCT_CREATE_SUCCESS,
-  PRODUCT_CREATE_FAIL,  
-  PRODUCT_CREATE_RESET, 
+  PRODUCT_CREATE_FAIL,
 } 
 from '../constants/productConstants.js'
 import axios from 'axios'
@@ -107,8 +106,8 @@ export const createProduct = () => async (
             },
         }
 
-       const { data } = await axios.post(`/api/products}`, {}, config)
-
+       const { data } = await axios.post(`/api/products`, {}, config)
+       
       dispatch({ 
         type: PRODUCT_CREATE_SUCCESS,
         payload: data
