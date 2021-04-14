@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import Message from '../components/Message'
 import Loader from '../components/Loader'
 import FormContainer from '../components/FormContainer'
-import { listProductDeails, updateProduct } from '../actions/productAction'
+import { listProductDetails, updateProduct } from '../actions/productAction'
 import { PRODUCT_CREATE_RESET } from '../constants/productConstants'
 
 const ProductEditScreen = ({ match, history }) => {
@@ -36,7 +36,7 @@ const ProductEditScreen = ({ match, history }) => {
   useEffect(() => {
     
     if (!product.name || product._id !== productId) {
-        dispatch(listProductDeails(productId))
+        dispatch(listProductDetails(productId))
     } else {
         setName(product.name)
         setPrice(product.price)
@@ -61,7 +61,7 @@ const ProductEditScreen = ({ match, history }) => {
         <i className="fas fa-arrow-alt-circle-left"> Go Back </i>
       </Link>
       <FormContainer>
-      <i className="far fa-edit"><h1>Edit Product</h1></i>
+        <h1> &nbsp;<i className="far fa-edit"></i> Edit Product </h1>
         
         {loading ? (
           <Loader />
@@ -70,7 +70,7 @@ const ProductEditScreen = ({ match, history }) => {
         ) : (
           <Form onSubmit={submitHandler}>
             <Form.Group controlId='name'>
-              <Form.Label><b>Name</b></Form.Label>
+              <Form.Label><h2><b>Name</b></h2></Form.Label>
               <Form.Control
                 type='name'
                 placeholder='Enter name'
@@ -80,7 +80,13 @@ const ProductEditScreen = ({ match, history }) => {
             </Form.Group>
 
             <Form.Group controlId='price'>
-              <Form.Label><b>Price</b></Form.Label>
+              <Form.Label>
+                    <h2>
+                      <i className="fas fa-hand-holding-usd">
+                          <b>&nbsp; Price</b>
+                        </i>
+                    </h2>
+                        </Form.Label>
               <Form.Control
                 type='number'
                 placeholder='Provide Price'
@@ -90,7 +96,13 @@ const ProductEditScreen = ({ match, history }) => {
             </Form.Group>
 
             <Form.Group controlId='image'>
-            <Form.Label><b>Image</b></Form.Label>
+            <Form.Label> 
+                <h2>
+                    <i className="fas fa-cloud-upload-alt">
+                        <b>&nbsp;Image</b>
+                    </i>
+                </h2>
+                </Form.Label>
               <Form.Control
                 type='text'
                 placeholder='Provide image URL'
@@ -100,7 +112,13 @@ const ProductEditScreen = ({ match, history }) => {
             </Form.Group>
 
             <Form.Group controlId='brand'>
-              <Form.Label><b>Brand</b></Form.Label>
+              <Form.Label>
+                  <h2>
+                    <i className="fas fa-tag">
+                      <b>&nbsp; Brand</b>
+                    </i>
+                  </h2> 
+                </Form.Label>
               <Form.Control
                 type='text'
                 placeholder='Provide Brand'
@@ -110,7 +128,11 @@ const ProductEditScreen = ({ match, history }) => {
             </Form.Group>
 
             <Form.Group controlId='category'>
-              <Form.Label><b>Category</b></Form.Label>
+              <Form.Label>
+                    <h2>
+                      <b>Category</b>
+                    </h2>
+                  </Form.Label>
               <Form.Control
                 type='text'
                 placeholder='Provide category'
@@ -120,7 +142,13 @@ const ProductEditScreen = ({ match, history }) => {
             </Form.Group>
 
             <Form.Group controlId='countInStock'>
-              <Form.Label><b>Count In Stock</b></Form.Label>
+              <Form.Label>
+                <h2>
+                    <i className="fas fa-cubes">
+                        <b>&nbsp; Count In Stock</b>
+                    </i>
+                </h2>
+                </Form.Label>
               <Form.Control
                 type='number'
                 placeholder='Provide Count In Stock'
@@ -130,7 +158,13 @@ const ProductEditScreen = ({ match, history }) => {
             </Form.Group>
 
             <Form.Group controlId='rating'>
-              <Form.Label><b>Rating</b></Form.Label>
+              <Form.Label>
+                    <h2>
+                        <i className="fas fa-star-half-alt">
+                            <b>&nbsp; Rating</b>
+                        </i>
+                    </h2>
+                    </Form.Label>
               <Form.Control
                 type='number'
                 placeholder='Provide Rating'
@@ -140,7 +174,13 @@ const ProductEditScreen = ({ match, history }) => {
             </Form.Group>
 
             <Form.Group controlId='description'>
-              <Form.Label><b>Description</b></Form.Label>
+              <Form.Label>
+                  <h2>
+                    <i class="fas fa-pen">
+                      <b> &nbsp; Description</b>
+                    </i>
+                  </h2>
+                  </Form.Label>
               <Form.Control
                 type='text'
                 placeholder='Provide Description'
@@ -150,7 +190,11 @@ const ProductEditScreen = ({ match, history }) => {
             </Form.Group>
 
             <Button  type='submit' className='btn btn-dark btn-sm' block>
-              Update
+                <h5>
+                    <i className="fas fa-file-upload">
+                        <b>&nbsp; Update</b>
+                    </i> 
+                </h5>
            </Button>
           </Form>
         )}
