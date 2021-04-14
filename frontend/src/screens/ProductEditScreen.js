@@ -29,13 +29,6 @@ const ProductEditScreen = ({ match, history }) => {
   const productUpdate = useSelector((state) => state.productUpdate)
   const { loading: loadingUpdate, error:errorUpdate, success: successUpdate } = productUpdate
 
-//   const userUpdate = useSelector((state) => state.userUpdate)
-//   const {
-//     loading: loadingUpdate,
-//     error: errorUpdate,
-//     success: successUpdate,
-//   } = userUpdate
-
   useEffect(() => {
     if(successUpdate){
         dispatch({type: PRODUCT_UPDATE_RESET})
