@@ -68,9 +68,9 @@ const OrderListScreen = ({history}) => {
                                         }
                                     </td>
                                     <td>
-                                        <LinkContainer to={`/admin/order/${order._id}`}>
+                                    <LinkContainer to={`/order/${order._id}`}>
                                             <Button variant='light' className='btn-sm'>
-                                                <i className="fas fa-user-edit"> Details </i>
+                                                <i className="fas fa-info-circle"> Details </i>
                                             </Button>
                                         </LinkContainer>
                                     </td>
