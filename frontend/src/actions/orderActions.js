@@ -16,9 +16,9 @@ import {
     ORDER_LIST_MY_SUCCESS,
     ORDER_LIST_MY_FAIL,
 
-    ORDER_LIST_ALL_REQUEST,
-    ORDER_LIST_ALL_SUCCESS,
-    ORDER_LIST_ALL_FAIL,  
+    ORDER_LIST_REQUEST,
+    ORDER_LIST_SUCCESS,
+    ORDER_LIST_FAIL,  
 } from '../constants/orderConstants'
 
 
@@ -157,7 +157,7 @@ export const listOrders = () => async (
     ) =>{
     try {
         dispatch({
-            type: ORDER_LIST_ALL_REQUEST
+            type: ORDER_LIST_REQUEST
         })
         const { userLogin: { userInfo}} = getState() // Is necessary to pass your token
 
@@ -170,13 +170,13 @@ export const listOrders = () => async (
         const { data } = await axios.get(`/api/orders`, config)
 
         dispatch({
-            type: ORDER_LIST_ALL_SUCCESS,
+            type: ORDER_LIST_SUCCESS,
             payload: data 
         })
         
     } catch (error) {
         dispatch({
-          type: ORDER_LIST_ALL_FAIL,
+          type: ORDER_LIST_FAIL,
           payload:
             error.response && error.response.data.message
               ? error.response.data.message
