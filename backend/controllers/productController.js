@@ -14,13 +14,16 @@ const getProducts = asyncHandler(async(req, res) =>{
     {
       name: {
         $regex: req.query.keyword,
-        $options:'i'
-      }
-    } : {}
+        $options: 'i',
+      },
+    } 
+    : {}
 
 
     const count = await Product.countDocuments({...keyword})
-    const products = await Product.find({...keyword }).limit(pageSize).skip(pageSize * page -1 )
+    const products = await Product.find({...keyword })
+      .limit(pageSize)
+      .skip(pageSize * (page - 1 ))
     // throw new Error('New Error')
 
     
