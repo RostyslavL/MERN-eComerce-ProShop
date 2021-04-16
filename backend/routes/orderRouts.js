@@ -4,6 +4,7 @@ import {
     addOrderItems,
     getOrderByID,
     updateOrderToPaid,
+    updateOrderToDelivered,
     getMyOrders,
     getAllOrders 
 } from '../controllers/orderController.js'
@@ -15,6 +16,6 @@ router.route('/')
 router.route('/myorders').get(protect, getMyOrders)
 router.route('/:id').get(protect, getOrderByID)
 router.route('/:id/pay').put(protect, updateOrderToPaid)
-
+router.route('/:id/deliver').put(protect, admin, updateOrderToDelivered)
 
 export default router
