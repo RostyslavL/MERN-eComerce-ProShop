@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
-import { Row, Col, Image, ListGroup, Card, Button, Form } from 'react-bootstrap'
+import { Row, Col, Image, ListGroup, Card, Button, Form ,Collapse} from 'react-bootstrap'
 import Rating from '../components/Rating'
 import Message from '../components/Message'
 import Loader from '../components/Loader'
@@ -52,6 +52,7 @@ const ProductScreen = ({ history, match }) => {
       })
     )
   }
+  const [open, setOpen] = useState(false)
 
   return (
     <>
@@ -81,8 +82,20 @@ const ProductScreen = ({ history, match }) => {
                 </ListGroup.Item>
                 <ListGroup.Item>Price: ${product.price}</ListGroup.Item>
                 <ListGroup.Item>
-                  Description: {product.description}
-                </ListGroup.Item>
+                        <Button
+                            className="btn btn-dark btn-lg my-3"
+                            onClick={() => setOpen(!open)}
+                            aria-controls="description-collapse-text"
+                            aria-expanded={open}
+                        >
+                            Description
+                        </Button> 
+                        <Collapse in={open}>
+                            <div id="description-collapse-text">
+                                <h4> {product.description} </h4> 
+                            </div>
+                            </Collapse> 
+                        </ListGroup.Item>
               </ListGroup>
             </Col>
             <Col md={3}>
