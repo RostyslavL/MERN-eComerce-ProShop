@@ -13,6 +13,7 @@ import { Row,
 import Rating from '../components/Rating'
 import Message from '../components/Message'
 import Loader from '../components/Loader'
+import Meta from '../components/Meta'
 import { listProductDetails, createProductReview } from '../actions/productAction'
 import { PRODUCT_CREATE_REVIEW_RESET } from '../constants/productConstants'
 
@@ -63,7 +64,7 @@ const ProductScreen = ({ history, match }) => {
   const [open, setOpen] = useState(false)
 
   return (
-    <>
+    <>    
       <Link className='btn btn-dark btn-sm my-3' to='/'>
         <i className="fas fa-arrow-alt-circle-left"> Go Back </i>
       </Link>
@@ -73,6 +74,7 @@ const ProductScreen = ({ history, match }) => {
         <Message variant='danger'>{error}</Message>
       ) : (
         <>
+        <Meta title={product.name} />
           <Row>
             <Col md={6}>
               <Image src={product.image} alt={product.name} fluid />
